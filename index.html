@@ -7,972 +7,439 @@
 <title>Cuhi the Great ✨</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap');
-
-:root {
-  --pink: #ff69b4;
-  --purple: #9858e8;
-  --dark: #592775;
-  --light: #fff1fb;
-  --white: #ffffff;
-}
-
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
-  color: var(--dark);
-  background: linear-gradient(
-    135deg,
-    #fff0f8,
-    #f4e6ff,
-    #ffe8f4,
-    #f0e5ff
-  );
-  background-size: 300% 300%;
-  animation: gradientMove 12s ease infinite;
-  overflow-x: hidden;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe0f0, #eadcff, #fff0f7);
+    color: #56345f;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-button, input {
-  font: inherit;
+html {
+    scroll-behavior: smooth;
 }
 
 button {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+    font-family: inherit;
 }
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
-  outline: 3px solid #9858e8;
-  outline-offset: 4px;
+.sparkle {
+    position: fixed;
+    color: #ffffff;
+    pointer-events: none;
+    z-index: 0;
+    animation: float 7s linear infinite;
+    text-shadow: 0 0 12px #c77dff;
 }
 
-/* PASSWORD SCREEN */
-
-#lockScreen {
-  min-height: 100svh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
+@keyframes float {
+    0% {
+        transform: translateY(105vh) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
-.lock-box {
-  width: 100%;
-  max-width: 420px;
-  background: rgba(255,255,255,.9);
-  padding: 35px 25px;
-  border-radius: 30px;
-  text-align: center;
-  box-shadow: 0 15px 50px #b76acb35;
-  border: 2px solid white;
-  animation: popIn .8s ease;
+#password-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #f9c5e5, #d9c2ff, #ffe6f2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.lock-sparkle {
-  font-size: 50px;
-  animation: sparkle 2s infinite alternate;
+.password-box {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255,255,255,0.88);
+    padding: 35px 25px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(125, 67, 155, 0.2);
+    border: 2px solid white;
 }
 
-.lock-box h1 {
-  font-family: 'Pacifico', cursive;
-  color: #b43ba7;
-  font-size: 37px;
-  margin: 12px 0;
+.password-box h1 {
+    color: #a347a0;
+    font-size: 2rem;
+    margin-bottom: 12px;
 }
 
-.lock-box p {
-  line-height: 1.8;
-  margin: 12px 0;
+.password-box p {
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 input {
-  width: 100%;
-  padding: 14px;
-  border: 2px solid #f0c4ee;
-  border-radius: 15px;
-  margin-top: 15px;
-  background: #fff9fe;
-  text-align: center;
-  font-size: 16px;
-  color: var(--dark);
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e0b4e8;
+    border-radius: 15px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    border-color: #ad69d4;
 }
 
 .main-button {
-  border: none;
-  color: white;
-  font-weight: 900;
-  padding: 14px 24px;
-  border-radius: 30px;
-  margin-top: 17px;
-  background: linear-gradient(100deg, #ff65b4, #9959e9);
-  box-shadow: 0 6px 0 #d5a0e8;
-  transition: transform .2s, box-shadow .2s;
+    background: linear-gradient(135deg, #d77cbe, #a67be8);
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.main-button:active {
-  transform: translateY(3px);
-  box-shadow: 0 3px 0 #d5a0e8;
+.main-button:hover {
+    transform: scale(1.05);
 }
 
-#error {
-  color: #b43ba7;
-  font-size: 13px;
+#error-message {
+    color: #c0396d;
+    margin-top: 12px;
+    font-size: 14px;
 }
 
-/* GENERAL */
-
-.hidden {
-  display: none !important;
+#website {
+    display: none;
+    position: relative;
+    z-index: 1;
 }
 
-section {
-  padding: 65px 20px;
-  max-width: 900px;
-  margin: auto;
+header {
+    text-align: center;
+    padding: 75px 20px 55px;
 }
 
-.section-heading {
-  font-size: clamp(28px, 7vw, 40px);
-  text-align: center;
-  color: #a039a3;
-  margin-bottom: 12px;
+.small-heading {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9657a8;
+    margin-bottom: 15px;
 }
 
-.section-subtitle {
-  text-align: center;
-  line-height: 1.8;
-  max-width: 570px;
-  margin: 0 auto 28px;
-  color: #79508c;
+header h1 {
+    font-size: clamp(2.5rem, 9vw, 5rem);
+    color: #a444a0;
+    text-shadow: 2px 3px 0 white;
+    margin-bottom: 18px;
 }
 
-.sparkle-divider {
-  text-align: center;
-  color: #b56ae5;
-  letter-spacing: 12px;
-  margin: 24px 0;
+header p {
+    max-width: 650px;
+    margin: auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
-/* HERO */
-
-.hero {
-  position: relative;
-  min-height: 90svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 65px 20px;
-  overflow: hidden;
+.section {
+    width: 92%;
+    max-width: 1000px;
+    margin: 0 auto 45px;
+    padding: 30px 24px;
+    background: rgba(255,255,255,0.72);
+    border: 2px solid rgba(255,255,255,0.9);
+    border-radius: 28px;
+    box-shadow: 0 8px 25px rgba(140, 90, 160, 0.12);
 }
 
-.hero-label {
-  display: inline-block;
-  padding: 10px 18px;
-  background: white;
-  color: #a33ba5;
-  border: 1px solid #f4c8ee;
-  border-radius: 30px;
-  letter-spacing: 2px;
-  font-size: 11px;
-  font-weight: 900;
-  margin-bottom: 25px;
+.section h2 {
+    color: #a444a0;
+    text-align: center;
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    margin-bottom: 25px;
 }
 
-.hero h1 {
-  font-size: clamp(53px, 14vw, 95px);
-  line-height: 1.12;
-  font-weight: 900;
-  letter-spacing: -3px;
-  color: #b43ba7;
-  text-shadow: 3px 4px 0 #ffc8eb;
+.intro {
+    text-align: center;
+    line-height: 1.9;
+    font-size: 1.05rem;
 }
-
-.hero h1 span {
-  display: block;
-  color: #8751d5;
-  text-shadow: 3px 4px 0 #e2c9ff;
-}
-
-.hero-description {
-  max-width: 480px;
-  margin: 25px auto 10px;
-  line-height: 1.9;
-  font-size: 16px;
-}
-
-.hero-stars {
-  font-size: 25px;
-  letter-spacing: 12px;
-  margin: 20px 0;
-  animation: sparkle 2s infinite alternate;
-}
-
-.scroll-note {
-  margin-top: 40px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #9255b1;
-  animation: bob 2s infinite;
-}
-
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(7px); }
-}
-
-@keyframes sparkle {
-  from { opacity: .6; transform: scale(.96); }
-  to { opacity: 1; transform: scale(1.06); }
-}
-
-@keyframes popIn {
-  from { opacity: 0; transform: scale(.92); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* CARDS */
 
 .achievement-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 17px;
-  margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 17px;
 }
 
-.card {
-  background: rgba(255,255,255,.85);
-  border: 1px solid #ffffff;
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 10px 30px #a45eb91a;
-  transition: transform .25s, box-shadow .25s;
+.achievement-card {
+    background: linear-gradient(135deg, #fff0f8, #f0e7ff);
+    border: 1px solid white;
+    padding: 23px 18px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 1.7;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px #a45eb92b;
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(164, 68, 160, 0.15);
 }
 
-.card-number {
-  color: #bc61d2;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 3px;
+.achievement-number {
+    display: block;
+    color: #a444a0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-.card h3 {
-  color: #a13e9d;
-  font-size: 20px;
-  margin: 12px 0;
+.achievement-card h3 {
+    margin-bottom: 8px;
+    color: #80438d;
 }
 
-.card p {
-  color: #755381;
-  line-height: 1.8;
-  font-size: 14px;
+.future-box {
+    background: linear-gradient(135deg, #dcbcff, #ffcce7);
+    padding: 30px 20px;
+    border-radius: 22px;
+    text-align: center;
 }
 
-.card-star {
-  font-size: 25px;
-  margin-bottom: 8px;
+.future-box h3 {
+    font-size: clamp(1.8rem, 6vw, 2.7rem);
+    color: #873d9d;
+    margin-bottom: 15px;
 }
 
-/* GRADIENT FEATURE */
-
-.feature {
-  max-width: 800px;
-  margin: 15px auto;
-  padding: 40px 25px;
-  border-radius: 32px;
-  color: white;
-  text-align: center;
-  background: linear-gradient(135deg, #ff70bb, #b05cdd, #7957d5);
-  box-shadow: 0 15px 40px #a45eb930;
+.future-box p {
+    line-height: 1.9;
 }
 
-.feature h2 {
-  font-size: clamp(29px, 7vw, 43px);
-  margin-bottom: 20px;
+.fmge-box {
+    background: linear-gradient(135deg, #fff0f7, #e9ddff);
+    border-radius: 22px;
+    padding: 28px 20px;
+    text-align: center;
+    line-height: 1.9;
 }
 
-.feature p {
-  line-height: 2;
-  max-width: 580px;
-  margin: auto;
+.fmge-box h3 {
+    font-size: 1.7rem;
+    color: #a444a0;
+    margin-bottom: 15px;
 }
 
-.feature .big-star {
-  font-size: 42px;
-  margin-bottom: 12px;
+.fmge-date {
+    display: inline-block;
+    margin: 15px 0;
+    padding: 12px 22px;
+    background: white;
+    color: #a444a0;
+    font-size: 1.15rem;
+    font-weight: bold;
+    border-radius: 25px;
 }
 
-/* LETTER */
-
-.letter-card {
-  background: rgba(255,255,255,.9);
-  border-radius: 28px;
-  padding: 30px 24px;
-  line-height: 2;
-  box-shadow: 0 10px 35px #a45eb91c;
-  border: 1px solid white;
+.letter {
+    font-size: 1.05rem;
+    line-height: 2;
+    white-space: pre-line;
 }
-
-.letter-card p {
-  margin-bottom: 18px;
-}
-
-.signature {
-  font-weight: 900;
-  color: #a13e9d;
-}
-
-/* PHOTO GALLERY */
 
 .gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 13px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
 }
 
 .photo-frame {
-  background: white;
-  border-radius: 20px;
-  padding: 9px;
-  box-shadow: 0 8px 25px #a45eb91c;
-  overflow: hidden;
+    background: white;
+    border: 5px solid white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(130, 70, 150, 0.15);
+    aspect-ratio: 4 / 5;
 }
 
 .photo-frame img {
-  width: 100%;
-  height: 175px;
-  object-fit: cover;
-  display: block;
-  border-radius: 14px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.photo-caption {
-  padding: 12px 4px 5px;
-  font-size: 12px;
-  font-weight: 800;
-  text-align: center;
-  color: #9951a6;
+.closing {
+    text-align: center;
+    padding: 35px 20px 55px;
+    line-height: 2;
 }
 
-.photo-placeholder {
-  min-height: 165px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 15px;
-  color: #9d61bb;
-  background: linear-gradient(135deg, #fff0fa, #f0e5ff);
-  border: 2px dashed #d6a1e7;
-  border-radius: 14px;
-  font-size: 13px;
-  line-height: 1.8;
+.closing h2 {
+    color: #a444a0;
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    margin-bottom: 15px;
 }
 
-/* COUNTDOWN-STYLE MOTIVATION */
-
-.exam-box {
-  text-align: center;
-  background: white;
-  border-radius: 28px;
-  padding: 30px 22px;
-  box-shadow: 0 10px 35px #a45eb91c;
+.closing p {
+    max-width: 650px;
+    margin: auto;
 }
-
-.exam-box h3 {
-  font-size: 26px;
-  color: #a13e9d;
-  margin-bottom: 15px;
-}
-
-.exam-box p {
-  line-height: 1.9;
-  margin: 12px 0;
-}
-
-/* FOOTER */
-
-footer {
-  padding: 40px 20px;
-  text-align: center;
-  color: #88569b;
-  line-height: 2;
-  font-size: 13px;
-}
-
-footer .footer-star {
-  font-size: 30px;
-  letter-spacing: 8px;
-  margin-bottom: 10px;
-}
-
-/* FLOATING SPARKLES */
-
-#sparkleLayer {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.floating-sparkle {
-  position: absolute;
-  bottom: -40px;
-  color: #b75cdb;
-  text-shadow: 0 0 12px #ffffff;
-  animation: floatUp linear forwards;
-  opacity: .8;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) rotate(0deg) scale(.7);
-    opacity: 0;
-  }
-  15% { opacity: .9; }
-  100% {
-    transform: translateY(-115vh) rotate(160deg) scale(1.3);
-    opacity: 0;
-  }
-}
-
-/* SCROLL ANIMATION */
 
 .reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .7s ease, transform .7s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@media (min-width: 620px) {
-  .achievement-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+@media (max-width: 480px) {
+    header {
+        padding-top: 55px;
+    }
 
-  .photo-frame img {
-    height: 230px;
-  }
+    .section {
+        padding: 25px 17px;
+    }
 
-  .photo-placeholder {
-    min-height: 220px;
-  }
+    .gallery {
+        gap: 10px;
+    }
 
-  .letter-card {
-    padding: 40px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-  }
+    .photo-frame {
+        border-width: 3px;
+        border-radius: 14px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div id="sparkleLayer" aria-hidden="true"></div>
+<!-- FLOATING SPARKLES -->
+<div id="sparkles"></div>
 
 <!-- PASSWORD SCREEN -->
-<div id="lockScreen">
-  <div class="lock-box">
-    <div class="lock-sparkle">✦ ✧ ✦</div>
+<div id="password-screen">
+    <div class="password-box">
+        <h1>✨ A Little Surprise ✨</h1>
 
-    <h1>Cuhi the Great</h1>
+        <p>
+            A special little website for someone extraordinary.
+            <br>
+            Enter the secret password to continue. 🌟
+        </p>
 
-    <p>
-      A little surprise has been created just for you.
-      <br>
-      A world full of memories, achievements, and sparkles awaits.
-    </p>
+        <form id="password-form">
+            <input
+                type="password"
+                id="password-input"
+                placeholder="Enter password"
+                autocomplete="off"
+                required
+            >
 
-    <form id="passwordForm">
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter your secret password"
-        autocomplete="off"
-        aria-label="Website password"
-        required
-      >
+            <button class="main-button" type="submit">
+                Unlock the Surprise ✨
+            </button>
+        </form>
 
-      <button class="main-button" type="submit">
-        ✨ Unlock Your Surprise ✨
-      </button>
-    </form>
-
-    <p id="error" role="status"></p>
-  </div>
+        <div id="error-message"></div>
+    </div>
 </div>
 
 <!-- MAIN WEBSITE -->
-<main id="website" class="hidden">
+<div id="website">
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-label">A SPECIAL LITTLE UNIVERSE</div>
+    <header>
+        <div class="small-heading">A little appreciation page</div>
 
-    <h1>
-      Cuhi
-      <span>The Great</span>
-    </h1>
+        <h1>Cuhi the Great ✨</h1>
 
-    <div class="hero-stars">✦ ✧ ✨ ✧ ✦</div>
-
-    <p class="hero-description">
-      For the girl who has survived the impossible,
-      solved a thousand problems, and still has so many
-      amazing chapters waiting to unfold.
-    </p>
-
-    <button
-      class="main-button"
-      onclick="document.getElementById('achievements').scrollIntoView({behavior:'smooth'})"
-    >
-      Discover Your Greatness ✨
-    </button>
-
-    <div class="scroll-note">SCROLL TO EXPLORE ✧</div>
-  </header>
-
-  <div class="sparkle-divider">✦ ✧ ✦ ✧ ✦</div>
-
-  <!-- ACHIEVEMENTS -->
-  <section id="achievements">
-    <h2 class="section-heading reveal">The Hall of Fame</h2>
-
-    <p class="section-subtitle reveal">
-      An official record of a very extraordinary human.
-      The list is not complete because there is simply too much to celebrate.
-    </p>
-
-    <div class="achievement-grid">
-
-      <article class="card reveal">
-        <div class="card-star">✦</div>
-        <div class="card-number">ACHIEVEMENT 01</div>
-        <h3>Survived ASR. TWICE.</h3>
         <p>
-          Once wasn't enough, apparently.
-          She came back for round two and lived to tell the tale.
-          That deserves a permanent place in history.
+            For the girl who has survived so much,
+            achieved so much, and still has so much greatness ahead.
+            This little corner of the internet is all about YOU. 🌟
         </p>
-      </article>
+    </header>
 
-      <article class="card reveal">
-        <div class="card-star">✧</div>
-        <div class="card-number">ACHIEVEMENT 02</div>
-        <h3>Survived MNM.</h3>
-        <p>
-          Another challenge conquered.
-          Another chapter survived.
-          Still here, still growing, still moving forward.
+    <!-- INTRODUCTION -->
+    <section class="section reveal">
+        <h2>First Things First ✨</h2>
+
+        <p class="intro">
+            Some people are simply built differently.
+            They face challenges, survive difficult days,
+            solve problems that seem impossible,
+            and somehow keep going.
+            <br><br>
+            And then there is Cuhi.
+            <br><br>
+            This website is a tiny reminder of how far you have come
+            and how much more you are capable of achieving.
         </p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-star">✦</div>
-        <div class="card-number">ACHIEVEMENT 03</div>
-        <h3>One of the Best Tooth Masters</h3>
-        <p>
-          Soft skills, dedication, and a title that deserves
-          its own trophy. A future doctor with serious potential.
-        </p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-star">✧</div>
-        <div class="card-number">ACHIEVEMENT 04</div>
-        <h3>A Truly Great Friend</h3>
-        <p>
-          More than achievements and exams, being a good friend
-          is something special. Never underestimate the difference
-          you make in other people's lives.
-        </p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-star">✦</div>
-        <div class="card-number">ACHIEVEMENT 05</div>
-        <h3>The Problem-Solving Queen</h3>
-        <p>
-          Give her a problem, give her a moment, and watch her
-          find a way forward. That brain deserves its own award.
-        </p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-star">✧</div>
-        <div class="card-number">ACHIEVEMENT 06</div>
-        <h3>Countless Other Great Things</h3>
-        <p>
-          There are so many more reasons to be proud of you.
-          This website would need a thousand pages to list them all.
-        </p>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- FUTURE DOCTOR -->
-  <section>
-    <div class="feature reveal">
-      <div class="big-star">✦ ✧ ✦</div>
-
-      <h2>Future Dr. Ruhi</h2>
-
-      <p>
-        Picture it: the day you finally get to introduce yourself
-        as Dr. Ruhi.
-        <br><br>
-        All the difficult days, all the revision, all the sacrifices,
-        and all the moments when you wondered whether you could do it.
-        <br><br>
-        One day, you'll look back and realise how far you've come.
-        <br><br>
-        <strong>
-          Your story is still being written, and there are
-          extraordinary chapters ahead.
-        </strong>
-      </p>
-    </div>
-  </section>
-
-  <!-- FMGE -->
-  <section id="fmge">
-    <h2 class="section-heading reveal">Your FMGE Era ✨</h2>
-
-    <p class="section-subtitle reveal">
-      A little reminder for your preparation journey in February.
-    </p>
-
-    <div class="exam-box reveal">
-      <div class="hero-stars">✦ ✧ ✦</div>
-
-      <h3>Dear Future Doctor,</h3>
-
-      <p>
-        I know preparing for FMGE can sometimes feel overwhelming.
-        There may be days when the syllabus seems endless and the
-        questions feel impossible.
-      </p>
-
-      <p>
-        On those days, remember how many other challenges you've
-        already faced. You have made it through difficult chapters
-        before, and you can keep working towards this goal too.
-      </p>
-
-      <p>
-        You do not need to know everything in one day.
-        Keep revising, practise questions, learn from your mistakes,
-        take breaks when you need them, and keep showing up.
-      </p>
-
-      <p>
-        A difficult mock test is feedback, not a final verdict.
-        A tiring day is just a tiring day, not a prediction of your future.
-      </p>
-
-      <p>
-        <strong>
-          Take it one day at a time. Trust your preparation.
-          Give yourself the same patience you would give a friend.
-        </strong>
-      </p>
-
-      <p>
-        February is a milestone you're working towards.
-        Keep going, Cuhi. I'm rooting for you.
-      </p>
-
-      <div class="hero-stars">✦ ✧ ✦</div>
-    </div>
-  </section>
-
-  <!-- PERSONAL LETTER -->
-  <section>
-    <h2 class="section-heading reveal">A Little Note For You</h2>
-
-    <p class="section-subtitle reveal">
-      Something to read whenever you need a reminder.
-    </p>
-
-    <div class="letter-card reveal">
-      <p>Dear Cuhi,</p>
-
-      <p>
-        I wanted to make you something that you could come back to
-        whenever life feels a little too much.
-      </p>
-
-      <p>
-        Sometimes, we become so focused on the next goal that we
-        forget to appreciate the person we've become along the way.
-        We keep thinking about what we haven't achieved yet,
-        forgetting everything we've already overcome.
-      </p>
-
-      <p>
-        So here's your reminder: you are more than your exam results.
-        You are more than a difficult day, a disappointing score,
-        or a moment of self-doubt.
-      </p>
-
-      <p>
-        Keep working towards your dreams, but don't forget to take
-        care of yourself along the way. You deserve rest, patience,
-        and the chance to enjoy the journey too.
-      </p>
-
-      <p>
-        I hope you achieve the things you've been working so hard for.
-        I hope you become the doctor you dream of becoming.
-        And I hope that, even when things get difficult,
-        you continue believing that your future is worth working for.
-      </p>
-
-      <p>
-        Whenever you open this website, I hope the sparkles remind
-        you that there is still so much ahead of you.
-      </p>
-
-      <p class="signature">
-        Keep shining, Cuhi. ✨
-      </p>
-    </div>
-  </section>
-
-  <!-- PHOTO GALLERY -->
-<div class="gallery">
-
-  <div class="photo-frame reveal">
-    <img src="cuhi1.jpg" alt="Cuhi">
-  </div>
-
-  <div class="photo-frame reveal">
-    <img src="cuhi2.heic" alt="Cuhi">
-  </div>
-
-  <div class="photo-frame reveal">
-    <img src="cuhi3.heic" alt="Cuhi">
-  </div>
-
-  <div class="photo-frame reveal">
-    <img src="cuhi4.heic" alt="Cuhi">
-  </div>
-
-</div>
-  
-  <section id="memories">
-    <h2 class="section-heading reveal">Our Little Gallery</h2>
-
-    <p class="section-subtitle reveal">
-      
-    </p>
-
-    <div class="gallery">
-
-      <div class="photo-frame reveal">
-        <div class="photo-placeholder">
-          ✧<br>
-      
-          
-        </div>
-        <div class="photo-caption"></div>
-      </div>
-    
-
-      <div class="photo-frame reveal">
-        <div class="photo-placeholder">
-          ✦<br>
-          
-        </div>
-        <div class="photo-caption"></div>
-      </div>
-
-      <div class="photo-frame reveal">
-        <div class="photo-placeholder">
-          ✧<br>
-         
-        </div>
-        <div class="photo-caption"></div>
-      </div>
-
-      <div class="photo-frame reveal">
-        <div class="photo-placeholder">
-          ✦<br>
-          
-        </div>
-        <div class="photo-caption"></div>
-      </div>
-
-    </div>
-
-    <p class="section-subtitle" style="margin-top:20px;font-size:12px;">
-      
-    </p>
-  </section>
-
-  <!-- FINAL MESSAGE -->
-  <section>
-    <div class="feature reveal">
-      <div class="big-star">✦ ✧ ✦</div>
-
-      <h2>Before You Go...</h2>
-
-      <p>
-        Remember how much you have already overcome.
-        <br><br>
-        Remember that progress can be slow and still be progress.
-        <br><br>
-        Remember to celebrate the little victories, too.
-        <br><br>
-        Keep learning. Keep growing. Keep going after your dreams.
-        <br><br>
-        <strong>
-          The world has a future doctor in the making.
-          Go show it what you're capable of, Cuhi.
-        </strong>
-      </p>
-
-      <div class="hero-stars">✦ ✧ ✦</div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-star">✦ ✧ ✦</div>
-
-    <p>Made especially for Ruhi.</p>
-    <p>A little website for a very big future.</p>
-    <p>Keep shining, Cuhi. ✨</p>
-  </footer>
-
-</main>
-
-<script>
-/*
-  This is a playful password gate, not strong security.
-  The password is visible in the site's source code.
-*/
-const correctPassword = "CuhiTheGreat";
-
-const lockScreen = document.getElementById("lockScreen");
-const website = document.getElementById("website");
-const passwordForm = document.getElementById("passwordForm");
-const passwordInput = document.getElementById("password");
-const errorMessage = document.getElementById("error");
-
-passwordForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  if (passwordInput.value === correctPassword) {
-    lockScreen.classList.add("hidden");
-    website.classList.remove("hidden");
-
-    startSparkles();
-    observeSections();
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } else {
-    errorMessage.textContent = "Not quite! Try again.";
-    passwordInput.value = "";
-    passwordInput.focus();
-  }
-});
-
-/* FLOATING SPARKLE ANIMATION */
-function startSparkles() {
-  const layer = document.getElementById("sparkleLayer");
-  const symbols = ["✦", "✧", "✨", "⋆", "✦"];
-
-  function createSparkle() {
-    if (document.hidden) return;
-
-    const sparkle = document.createElement("span");
-    sparkle.className = "floating-sparkle";
-    sparkle.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    sparkle.style.left = Math.random() * 100 + "%";
-    sparkle.style.fontSize = (12 + Math.random() * 17) + "px";
-    sparkle.style.animationDuration = (6 + Math.random() * 5) + "s";
-
-    layer.appendChild(sparkle);
-
-    setTimeout(function() {
-      sparkle.remove();
-    }, 12000);
-  }
-
-  for (let i = 0; i < 12; i++) {
-    setTimeout(createSparkle, i * 250);
-  }
-
-  setInterval(createSparkle, 700);
-}
-
-/* REVEAL SECTIONS AS THEY ENTER THE SCREEN */
-function observeSections() {
-  const elements = document.querySelectorAll(".reveal");
-
-  if (!("IntersectionObserver" in window)) {
-    elements.forEach(function(element) {
-      element.classList.add("visible");
-    });
-    return;
-  }
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.12
-  });
-
-  elements.forEach(function(element) {
-    observer.observe(element);
-  });
-}
-</script>
-
-</body>
-</html>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="section reveal">
+        <h2>Cuhi's Hall of Fame 🌟</h2>
+
+        <div class="achievement-grid">
+
+            <div class="achievement-card">
+                <span class="achievement-number">01 ✦</span>
+                <h3>ASR Survivor</h3>
+                Survived ASR not once, but TWICE.
+                That deserves its own award.
+            </div>
+
+            <div class="achievement-card">
+                <span class="achievement-number">02 ✦</span>
+                <h3>MNM Survivor</h3>
+                Survived MNM too.
+                At this point, the survival record speaks for itself.
+            </div>
+
+            <div class="achievement-card">
+                <span class="achievement-number">03 ✦</span>
+                <h3>Tooth Master</h3>
+                One of the best tooth masters around.
+                Nobody can take that title away.
+            </div>
+
+            <div class="achievement-card">
+                <span class="achievement-number">04 ✦</span>
+                <h3>Great Friend</h3>
+                Someone who makes life a little easier
+                just by being there.
+            </div>
+
+            <div class="achievement-card">
+                <span class="achievement-number">05 ✦</span>
+                <h3>Problem-Solving Queen</h3>
+                Give her a problem.
+                Watch her figure something out.
+            </div>
+
+            <
+              
