@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Cuhi the Great ✨</title>
 
 <style>
@@ -11,6 +10,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -21,36 +24,32 @@ body {
     overflow-x: hidden;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-button {
-    font-family: inherit;
+#sparkles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .sparkle {
-    position: fixed;
-    color: #ffffff;
-    pointer-events: none;
-    z-index: 0;
-    animation: float 7s linear infinite;
+    position: absolute;
+    bottom: -30px;
+    color: white;
     text-shadow: 0 0 12px #c77dff;
+    animation: float 8s linear infinite;
 }
 
 @keyframes float {
     0% {
-        transform: translateY(105vh) rotate(0deg);
+        transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
-    15% {
-        opacity: 1;
-    }
-    85% {
+    15%, 80% {
         opacity: 1;
     }
     100% {
-        transform: translateY(-10vh) rotate(360deg);
+        transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
     }
 }
@@ -58,7 +57,7 @@ button {
 #password-screen {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 100;
     background: linear-gradient(135deg, #f9c5e5, #d9c2ff, #ffe6f2);
     display: flex;
     justify-content: center;
@@ -69,23 +68,23 @@ button {
 .password-box {
     width: 100%;
     max-width: 400px;
-    background: rgba(255,255,255,0.88);
+    background: rgba(255,255,255,0.92);
     padding: 35px 25px;
     border-radius: 28px;
     text-align: center;
-    box-shadow: 0 10px 40px rgba(125, 67, 155, 0.2);
+    box-shadow: 0 10px 40px rgba(125,67,155,0.2);
     border: 2px solid white;
 }
 
 .password-box h1 {
     color: #a347a0;
     font-size: 2rem;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .password-box p {
+    line-height: 1.8;
     margin-bottom: 20px;
-    line-height: 1.6;
 }
 
 input {
@@ -94,12 +93,8 @@ input {
     border: 2px solid #e0b4e8;
     border-radius: 15px;
     font-size: 16px;
-    outline: none;
     margin-bottom: 15px;
-}
-
-input:focus {
-    border-color: #ad69d4;
+    outline: none;
 }
 
 .main-button {
@@ -111,17 +106,11 @@ input:focus {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.main-button:hover {
-    transform: scale(1.05);
 }
 
 #error-message {
     color: #c0396d;
     margin-top: 12px;
-    font-size: 14px;
 }
 
 #website {
@@ -160,12 +149,12 @@ header p {
 .section {
     width: 92%;
     max-width: 1000px;
-    margin: 0 auto 45px;
+    margin: 0 auto 40px;
     padding: 30px 24px;
-    background: rgba(255,255,255,0.72);
-    border: 2px solid rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.78);
+    border: 2px solid white;
     border-radius: 28px;
-    box-shadow: 0 8px 25px rgba(140, 90, 160, 0.12);
+    box-shadow: 0 8px 25px rgba(140,90,160,0.12);
 }
 
 .section h2 {
@@ -194,12 +183,11 @@ header p {
     border-radius: 20px;
     text-align: center;
     line-height: 1.7;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s;
 }
 
 .achievement-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(164, 68, 160, 0.15);
 }
 
 .achievement-number {
@@ -220,16 +208,13 @@ header p {
     padding: 30px 20px;
     border-radius: 22px;
     text-align: center;
+    line-height: 1.9;
 }
 
 .future-box h3 {
     font-size: clamp(1.8rem, 6vw, 2.7rem);
     color: #873d9d;
     margin-bottom: 15px;
-}
-
-.future-box p {
-    line-height: 1.9;
 }
 
 .fmge-box {
@@ -252,7 +237,6 @@ header p {
     padding: 12px 22px;
     background: white;
     color: #a444a0;
-    font-size: 1.15rem;
     font-weight: bold;
     border-radius: 25px;
 }
@@ -274,7 +258,7 @@ header p {
     border: 5px solid white;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 18px rgba(130, 70, 150, 0.15);
+    box-shadow: 0 5px 18px rgba(130,70,150,0.15);
     aspect-ratio: 4 / 5;
 }
 
@@ -336,7 +320,6 @@ header p {
 
 <body>
 
-<!-- FLOATING SPARKLES -->
 <div id="sparkles"></div>
 
 <!-- PASSWORD SCREEN -->
@@ -372,13 +355,13 @@ header p {
 <div id="website">
 
     <header>
-        <div class="small-heading">A little appreciation page</div>
+        <div class="small-heading">A Little Appreciation Page</div>
 
         <h1>Cuhi the Great ✨</h1>
 
         <p>
-            For the girl who has survived so much,
-            achieved so much, and still has so much greatness ahead.
+            For the girl who has survived so much, achieved so much,
+            and still has so much greatness ahead.
             This little corner of the internet is all about YOU. 🌟
         </p>
     </header>
@@ -390,8 +373,7 @@ header p {
         <p class="intro">
             Some people are simply built differently.
             They face challenges, survive difficult days,
-            solve problems that seem impossible,
-            and somehow keep going.
+            solve problems that seem impossible, and somehow keep going.
             <br><br>
             And then there is Cuhi.
             <br><br>
@@ -441,5 +423,211 @@ header p {
                 Watch her figure something out.
             </div>
 
-            <
-              
+            <div class="achievement-card">
+                <span class="achievement-number">06 ✦</span>
+                <h3>And So Much More</h3>
+                There are too many good things to list.
+                One website could never contain them all.
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FUTURE DOCTOR -->
+    <section class="section reveal">
+        <h2>The Future Is Bright ✨</h2>
+
+        <div class="future-box">
+            <h3>Dr. Ruhi 🌟</h3>
+
+            <p>
+                Future greatest doctor.
+                <br><br>
+                One day, all the hard work, sleepless nights,
+                difficult exams, and sacrifices will become part
+                of the story of how you got there.
+                <br><br>
+                Keep learning. Keep growing.
+                Keep believing in yourself.
+                <br><br>
+                The world has not seen the best of you yet.
+            </p>
+        </div>
+    </section>
+
+    <!-- FMGE MOTIVATION -->
+    <section class="section reveal">
+        <h2>Mission: FMGE 📚</h2>
+
+        <div class="fmge-box">
+            <h3>You've Got This, Cuhi! ✨</h3>
+
+            <div class="fmge-date">FMGE — February</div>
+
+            <p>
+                I know this journey can feel exhausting.
+                Some days will be productive, and some days
+                will feel like nothing is going right.
+                That is okay.
+                <br><br>
+                You do not need to be perfect every single day.
+                You just need to keep showing up and doing your best.
+                <br><br>
+                Every topic you revise, every question you practise,
+                and every mistake you learn from brings you forward.
+                <br><br>
+                Take breaks when you need them.
+                Believe in the work you have already put in.
+                One difficult day does not define you.
+                <br><br>
+                <strong>
+                    February is another step towards the doctor
+                    you have worked so hard to become. 🌟
+                </strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- PERSONAL MESSAGE -->
+    <section class="section reveal">
+        <h2>A Little Note for You ✨</h2>
+
+        <div class="letter">Hey Cuhi,
+
+This little website exists because you deserve to be reminded of the good things about yourself.
+
+You have survived difficult moments, made it through challenges, and continued moving forward even when things were not easy.
+
+You are smart, capable, funny, and genuinely a great friend. Never let a difficult exam, a bad day, or a moment of self-doubt make you forget that.
+
+I hope you keep believing in yourself, even on the days when everything feels overwhelming.
+
+I hope you achieve all the things you have been working towards. I hope you become the doctor you dream of becoming. And I hope that, years from now, you can look back at this phase of your life and feel proud of how far you have come.
+
+For now, take things one day at a time.
+
+Study hard, take care of yourself, and never forget how much potential you have.
+
+You have already come so far, and there is still so much ahead of you.
+
+Keep shining, Cuhi. ✨
+
+— Someone who believes in you 🌟</div>
+    </section>
+
+    <!-- PHOTO GALLERY: NO CAPTIONS -->
+    <section class="section reveal">
+        <h2>Our Little Gallery 📸</h2>
+
+        <p class="intro" style="margin-bottom:22px;">
+            Little moments, lovely memories, and a whole lot of chaos. ✨
+        </p>
+
+        <div class="gallery">
+
+            <div class="photo-frame reveal">
+                <img src="cuhi1.jpg" alt="Cuhi photo 1">
+            </div>
+
+            <div class="photo-frame reveal">
+                <img src="cuhi2.heic" alt="Cuhi photo 2">
+            </div>
+
+            <div class="photo-frame reveal">
+                <img src="cuhi3.heic" alt="Cuhi photo 3">
+            </div>
+
+            <div class="photo-frame reveal">
+                <img src="cuhi4.heic" alt="Cuhi photo 4">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CLOSING -->
+    <footer class="closing reveal">
+        <h2>Keep Shining, Cuhi ✨</h2>
+
+        <p>
+            This is your reminder that you are capable of incredible things.
+            <br>
+            One step at a time. One challenge at a time.
+            One achievement at a time.
+            <br><br>
+            Your story is still being written.
+            Make it a great one. 🌟
+            <br><br>
+            Made with appreciation, just for you. ✦
+        </p>
+    </footer>
+
+</div>
+
+<script>
+/* PASSWORD */
+const correctPassword = "CuhiTheGreat";
+
+document.getElementById("password-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const enteredPassword =
+        document.getElementById("password-input").value;
+
+    if (enteredPassword === correctPassword) {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("website").style.display = "block";
+        revealElements();
+    } else {
+        document.getElementById("error-message").textContent =
+            "Oops! Wrong password. Try again. ✨";
+    }
+});
+
+/* FLOATING SPARKLES */
+const sparkleContainer = document.getElementById("sparkles");
+const sparkleSymbols = ["✦", "✧", "✨", "⋆", "✩"];
+
+for (let i = 0; i < 24; i++) {
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "sparkle";
+    sparkle.textContent =
+        sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.fontSize = (12 + Math.random() * 18) + "px";
+    sparkle.style.animationDuration = (5 + Math.random() * 8) + "s";
+    sparkle.style.animationDelay = (Math.random() * 8) + "s";
+
+    sparkleContainer.appendChild(sparkle);
+}
+
+/* SCROLL ANIMATION */
+function revealElements() {
+    const elements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        elements.forEach(function(element) {
+            observer.observe(element);
+        });
+    } else {
+        elements.forEach(function(element) {
+            element.classList.add("visible");
+        });
+    }
+}
+</script>
+
+</body>
+</html>
