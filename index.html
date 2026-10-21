@@ -1,1 +1,336 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuhi the Great ♡</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Trebuchet MS", sans-serif;
+  background: linear-gradient(135deg, #ffe4f1, #f0d9ff, #fff0fa);
+  color: #56245f;
+  text-align: center;
+  overflow-x: hidden;
+}
+header {
+  padding: 55px 18px 35px;
+}
+.tag {
+  display: inline-block;
+  background: white;
+  border-radius: 30px;
+  padding: 9px 18px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #a13d9c;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: clamp(42px, 12vw, 68px);
+  line-height: 1.1;
+  color: #a52c8c;
+  text-shadow: 3px 3px #ffc4e4;
+}
+.subtitle {
+  margin: 18px auto;
+  max-width: 320px;
+  line-height: 1.7;
+}
+button {
+  border: none;
+  background: #a52c8c;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-size: 15px;
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #76206c;
+}
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #76206c;
+}
+section {
+  padding: 35px 18px;
+  max-width: 850px;
+  margin: auto;
+}
+h2 {
+  font-size: 29px;
+  margin-bottom: 22px;
+  color: #91267f;
+}
+.card {
+  background: rgba(255,255,255,.8);
+  padding: 23px;
+  border-radius: 22px;
+  margin: 15px 0;
+  box-shadow: 0 8px 25px #b35b9b20;
+  text-align: left;
+  line-height: 1.7;
+  animation: appear .8s ease both;
+}
+.card strong {
+  color: #a52c8c;
+}
+.number {
+  font-size: 25px;
+  margin-right: 8px;
+}
+.highlight {
+  background: linear-gradient(135deg, #b744a2, #8150c9);
+  color: white;
+  padding: 30px 22px;
+  border-radius: 25px;
+  line-height: 1.9;
+}
+.highlight h2 {
+  color: white;
+}
+.letter {
+  white-space: pre-line;
+  line-height: 2;
+  text-align: left;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.photo {
+  min-height: 150px;
+  background: #fff;
+  border: 2px dashed #c56ab6;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden;
+  color: #a52c8c;
+  font-size: 13px;
+}
+.photo img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 13px;
+}
+footer {
+  padding: 35px 20px;
+  color: #8d4a88;
+  line-height: 1.8;
+}
+.hidden {
+  display: none;
+}
+#lockScreen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+.lockBox {
+  width: 100%;
+  max-width: 380px;
+  padding: 35px 22px;
+  border-radius: 28px;
+  background: white;
+  box-shadow: 0 10px 40px #a52c8c25;
+}
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e3b4dd;
+  border-radius: 15px;
+  margin: 15px 0 5px;
+  font-size: 16px;
+  text-align: center;
+}
+#error {
+  color: #c12966;
+  font-size: 13px;
+  margin-top: 8px;
+}
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.floating {
+  position: fixed;
+  bottom: -30px;
+  font-size: 20px;
+  animation: floatUp 7s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0); opacity: .8; }
+  to { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+}
+@media (min-width: 600px) {
+  .achievements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="lockScreen">
+  <div class="lockBox">
+    <div style="font-size:45px;">♡</div>
+    <h1 style="font-size:38px;">Hey, Cuhi!</h1>
+    <p class="subtitle">
+      Someone made something special just for you.
+      Ready to enter your little world?
+    </p>
+    <form id="passwordForm">
+      <input id="password" type="password"
+        placeholder="Enter your secret password"
+        autocomplete="off">
+      <button type="submit">Unlock my surprise</button>
+    </form>
+    <p id="error"></p>
+  </div>
+</div>
+<div id="website" class="hidden">
+<header>
+  <div class="tag">A LITTLE REMINDER FOR YOU</div>
+  <h1>Cuhi the<br>Great</h1>
+  <p class="subtitle">
+    A little website for a girl who has survived so much
+    and is still becoming someone amazing.
+  </p>
+  <button onclick="document.getElementById('achievements').scrollIntoView({behavior:'smooth'})">
+    Discover your greatness
+  </button>
+</header>
+<section id="achievements">
+  <h2>Your Hall of Fame</h2>
+  <div class="achievements">
+    <div class="card">
+      <span class="number">01.</span>
+      <strong>Survived ASR. Twice.</strong>
+      <p>Because apparently surviving it once wasn't enough.</p>
+    </div>
+    <div class="card">
+      <span class="number">02.</span>
+      <strong>Survived MNM.</strong>
+      <p>Another challenge conquered. Still standing.</p>
+    </div>
+    <div class="card">
+      <span class="number">03.</span>
+      <strong>One of the best tooth masters.</strong>
+      <p>Those dental skills deserve their own recognition.</p>
+    </div>
+    <div class="card">
+      <span class="number">04.</span>
+      <strong>A genuinely great friend.</strong>
+      <p>The kind of person people are lucky to have around.</p>
+    </div>
+    <div class="card">
+      <span class="number">05.</span>
+      <strong>The problem-solving queen.</strong>
+      <p>Give her a problem and watch her figure something out.</p>
+    </div>
+    <div class="card">
+      <span class="number">06.</span>
+      <strong>And so much more.</strong>
+      <p>This list could go on forever. There is so much more to you.</p>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="highlight">
+    <h2>Future Dr. Ruhi</h2>
+    You have already come so far.<br>
+    There are still so many beautiful things ahead of you.<br><br>
+    <strong>One day, you are going to be a GREAT doctor.</strong><br>
+    And I hope you never forget how capable you are.
+  </div>
+</section>
+<section>
+  <h2>A little note for FMGE</h2>
+  <div class="card">
+    <p class="letter">Dear Cuhi,
+I know the FMGE journey can feel overwhelming sometimes. There will be days when studying feels endless and days when you question yourself.
+But please remember that one difficult day does not define you. One mock test does not define you. And an exam never defines your entire worth.
+Take things one day at a time. Trust the work you put in, keep revising, and give yourself a little kindness along the way.
+You do not have to be perfect. Just keep going.
+I'm rooting for you, always. I hope February brings you the result you have been working towards.
+And whatever happens, I hope you remember that there is so much more waiting for you beyond this exam.
+With lots of love,
+Your favourite human (probably).</p>
+  </div>
+</section>
+<section>
+  <h2>Our little memories</h2>
+  <p class="subtitle">
+    Add your favourite pictures here to make this website even more personal.
+  </p>
+  <div class="gallery">
+    <div class="photo">Your favourite picture together</div>
+    <div class="photo">A funny memory</div>
+    <div class="photo">A picture you both love</div>
+    <div class="photo">One for the memories</div>
+  </div>
+  <p style="font-size:12px;margin-top:15px;">
+    We'll add your actual photos in the next step.
+  </p>
+</section>
+<section>
+  <div class="highlight">
+    <h2>One last thing</h2>
+    In case nobody has reminded you lately:<br>
+    You are doing better than you think.<br>
+    You have achieved more than you realise.<br>
+    And your story is only beginning.
+    <br><br>
+    <strong>Go get it, Cuhi.</strong>
+  </div>
+</section>
+<footer>
+  Made with love, just for Ruhi.<br>
+  <span style="font-size:12px;">A little reminder that someone believes in you.</span>
+</footer>
+</div>
+<script>
+const correctPassword = "CuhiTheGreat";
+document.getElementById("passwordForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const entered = document.getElementById("password").value;
+  if (entered === correctPassword) {
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("website").classList.remove("hidden");
+    startFloatingHearts();
+  } else {
+    document.getElementById("error").textContent =
+      "Not quite! Try again, Cuhi.";
+  }
+});
+function startFloatingHearts() {
+  const symbols = ["♡", "✦", "♥"];
+  setInterval(function() {
+    const item = document.createElement("div");
+    item.className = "floating";
+    item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.animationDuration = (5 + Math.random() * 4) + "s";
+    document.body.appendChild(item);
+    setTimeout(function() {
+      item.remove();
+    }, 9000);
+  }, 900);
+}
+</script>
+</body>
+</html>
